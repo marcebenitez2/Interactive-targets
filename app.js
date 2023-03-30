@@ -14,7 +14,7 @@ const btnConfirm = document.querySelector(".confirm");
 
 const form = document.querySelector(".form");
 
-const error = document.querySelector('.error')
+const error = document.querySelector(".error");
 
 inpNumber.addEventListener("input", () => {
   number = inpNumber.value;
@@ -55,17 +55,21 @@ btnConfirm.addEventListener("click", (e) => {
     </div>
    `;
 
-  if (number.length === 16) {
-    form.innerHTML = newContent;
-    
-    form.innerHTML = newContent
-    const backBtn = document.querySelector('.exit');
-    backBtn.addEventListener('click', function() {
-  
-    window.location.reload();})
+  if (inpNumber.value.length === 16 && inpName.value.length >= 3) {
+    if (inpcvc.value.length === 3) {
+      if (inpmm.value.length === 2 && inpyy.value.length === 2) {
+        form.innerHTML = newContent;
+        const backBtn = document.querySelector(".exit");
+        backBtn.addEventListener("click", function () {
+          window.location.reload();
+        });
+      } else {
+        error.classList.add('error-active') 
+      };
+    } else {
+      error.classList.add('error-active') 
+    };
   } else {
     error.classList.add('error-active') 
-    console.log(names.length)
-    console.log(number.length)
-  }
+  };
 });
